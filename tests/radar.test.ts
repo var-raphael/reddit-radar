@@ -149,3 +149,20 @@ test("classifier recovers when the first reply is junk but the retry is valid", 
   assert.equal(s.kept, 1);
   assert.equal(s.failed, 0);
 });
+
+test("classifier asks the model to repair a rejected reply", async () => {
+  col.insertPosts(companyId, "Acme", [post("p1")]);
+  const db = dbm.getDb();
+  db.prepare("UPDATE posts SET relevant = 1 WHERE relevant IS NULL AND reddit_id != 'p1'").run();
+  const seen: any[] = [];
+  const spy = {
+    name: "spy",
+    complete: async (m: any) => {
+      seen.push(m);
+      return { content: seen.length === 1 ? good.replace('"negative"', "null") : good, usage: {} };
+    },
+  };
+  const s = await cls.classifyPending({ provider: spy, concurrency: 1 });
+  assert.equal(s.kept, 1);
+  assert.match(JSON.stringify(seen[1]), /rejected/);
+});

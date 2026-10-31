@@ -1,7 +1,7 @@
 import { getDb } from "./db";
 import { listKeywords } from "./keywords";
 import { getProvider } from "./llm";
-import type { LlmProvider } from "./llm/types";
+import type { LlmProvider, ChatMessage } from "./llm/types";
 
 export const CATEGORIES = [
   "complaint", "bug report", "product idea", "praise",
@@ -117,11 +117,22 @@ export async function classifyPending(
       try {
         const messages = buildMessages({ ...ctxFor(row.company_id), post: row });
         let result: Classification | null = null;
+        let convo: ChatMessage[] = messages;
         for (let attempt = 0; attempt < 2 && !result; attempt++) {
-          const { content, usage } = await provider.complete(messages);
+          const { content, usage } = await provider.complete(convo);
           stats.promptTokens += usage?.prompt_tokens ?? 0;
           stats.completionTokens += usage?.completion_tokens ?? 0;
-          try { result = parseClassification(content); } catch (e) { if (attempt === 1) throw e; }
+          try {
+            result = parseClassification(content);
+          } catch (e: any) {
+            if (attempt === 1) throw e;
+            // Repair: show the model what was wrong with its own reply.
+            convo = [
+              ...messages,
+              { role: "assistant", content },
+              { role: "user", content: `Your reply was rejected: ${e.message}. If relevant is true, category, sentiment and urgency must all be set to valid values. Reply again with ONLY the corrected JSON object.` },
+            ];
+          }
         }
         if (!result) throw new Error("no result");
         if (result.relevant) {

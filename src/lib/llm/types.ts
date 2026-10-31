@@ -1,4 +1,4 @@
-export type ChatMessage = { role: "system" | "user"; content: string };
+export type ChatMessage = { role: "system" | "user" | "assistant"; content: string };
 export type LlmResult = {
   content: string;
   usage?: { prompt_tokens?: number; completion_tokens?: number };
