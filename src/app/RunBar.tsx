@@ -1,10 +1,12 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
 import { Play } from "lucide-react";
+import Spinner from "./Spinner";
 
 type RunState = {
   running: boolean; startedAt: number | null; finishedAt: number | null;
-  added: number; kept: number; dropped: number; failed: number; collectSec: number; classifySec: number; error: string | null;
+  added: number; kept: number; dropped: number; failed: number;
+  collectSec: number; classifySec: number; error: string | null;
 };
 
 function ago(ms: number) {
@@ -48,7 +50,9 @@ export default function RunBar({ onFinished }: { onFinished?: () => void }) {
     <div className="mb-5 flex items-center justify-between gap-3 rounded-2xl bg-white px-4 py-3 shadow-sm ring-1 ring-zinc-200">
       <div className="min-w-0 text-sm">
         {s?.running ? (
-          <p className="font-medium">Collecting and classifying…</p>
+          <p className="flex items-center gap-2 font-medium">
+            <Spinner />Collecting and classifying…
+          </p>
         ) : s?.finishedAt ? (
           <p>
             <span className="font-medium">Last run {ago(s.finishedAt)}</span>
@@ -65,8 +69,8 @@ export default function RunBar({ onFinished }: { onFinished?: () => void }) {
         disabled={s?.running}
         className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-zinc-900 px-3 py-1.5 text-sm font-medium text-white disabled:opacity-40"
       >
-        <Play className="h-4 w-4" />
-        Run now
+        {s?.running ? <Spinner /> : <Play className="h-4 w-4" />}
+        {s?.running ? "Running" : "Run now"}
       </button>
     </div>
   );

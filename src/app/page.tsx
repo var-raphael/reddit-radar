@@ -1,4 +1,5 @@
 "use client";
+import Spinner from "./Spinner";
 import RunBar from "./RunBar";
 import { ArrowUp, Check, Inbox, RotateCcw, Sparkles, X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
@@ -151,7 +152,7 @@ export default function Feed() {
         </p>
       )}
 
-      {loading && <p className="mt-6 text-sm text-zinc-500">Loading posts…</p>}
+      {loading && (<p className="mt-6 flex items-center gap-2 text-sm text-zinc-500"><Spinner />Loading posts…</p>)}
 
       {!loading && !error && posts.length === 0 && (
         <div className="mt-12 text-center text-zinc-500">

@@ -166,3 +166,21 @@ test("classifier asks the model to repair a rejected reply", async () => {
   assert.equal(s.kept, 1);
   assert.match(JSON.stringify(seen[1]), /rejected/);
 });
+
+test("deleting a company removes its data and leaves other companies alone", () => {
+  const other = kw.ensureCompany("Other");
+  kw.addKeyword(other, "Other", "brand");
+  col.insertPosts(other, "Other", [post("o1"), post("o2")]);
+  const db = dbm.getDb();
+  const count = (t: string, id: number) =>
+    db.prepare(`SELECT count(*) c FROM ${t} WHERE company_id = ?`).get(id).c;
+  const acmePosts = count("posts", companyId);
+  assert.ok(acmePosts > 0);
+
+  kw.deleteCompany(other);
+
+  assert.equal(count("posts", other), 0);
+  assert.equal(count("keywords", other), 0);
+  assert.equal(db.prepare("SELECT count(*) c FROM companies WHERE id = ?").get(other).c, 0);
+  assert.equal(count("posts", companyId), acmePosts);
+});

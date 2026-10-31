@@ -1,5 +1,5 @@
 "use client";
-import { X } from "lucide-react";
+import { Trash2, X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 
 type Company = { id: number; name: string };
@@ -63,6 +63,8 @@ export default function Keywords() {
   const [subs, setSubs] = useState<string[]>([]);
   const [newCompany, setNewCompany] = useState("");
   const [error, setError] = useState("");
+  const [postCount, setPostCount] = useState(0);
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
   const load = useCallback(async (id?: number | null) => {
     const r = await fetch(`/api/config${id ? `?company=${id}` : ""}`);
@@ -71,6 +73,8 @@ export default function Keywords() {
     setCompanyId(j.companyId);
     setKws(j.keywords);
     setSubs(j.subreddits);
+    setPostCount(j.postCount ?? 0);
+    setConfirmDelete(false);
   }, []);
 
   useEffect(() => { load(); }, [load]);
@@ -82,6 +86,17 @@ export default function Keywords() {
       await load(j.companyId ?? companyId);
     } catch (e: any) {
       setError(e.message);
+    }
+  }
+
+  async function removeCompany() {
+    try {
+      await send({ action: "delete_company", companyId });
+      setError("");
+      await load(null);
+    } catch (e: any) {
+      setError(e.message);
+      setConfirmDelete(false);
     }
   }
 
@@ -143,6 +158,31 @@ export default function Keywords() {
             onAdd={(value) => run({ action: "add_subreddit", value })}
             onRemove={(key) => run({ action: "remove_subreddit", value: key })}
           />
+
+          <section className="rounded-2xl bg-white p-4 ring-1 ring-red-200">
+            <h2 className="font-semibold text-red-700">Delete company</h2>
+            {!confirmDelete ? (
+              <>
+                <p className="text-xs text-zinc-500">Removes this company, its keywords and all collected posts.</p>
+                <button
+                  onClick={() => setConfirmDelete(true)}
+                  className="mt-3 inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-red-700 ring-1 ring-red-300"
+                >
+                  <Trash2 className="h-4 w-4" />Delete {companies.find((c) => c.id === companyId)?.name}
+                </button>
+              </>
+            ) : (
+              <>
+                <p className="mt-1 text-sm">
+                  Permanently delete <b>{companies.find((c) => c.id === companyId)?.name}</b>, its {postCount} collected posts and all its keywords? This cannot be undone.
+                </p>
+                <div className="mt-3 flex gap-2 text-sm">
+                  <button onClick={removeCompany} className="rounded-lg bg-red-600 px-3 py-1.5 font-medium text-white">Delete permanently</button>
+                  <button onClick={() => setConfirmDelete(false)} className="rounded-lg px-3 py-1.5 ring-1 ring-zinc-300">Cancel</button>
+                </div>
+              </>
+            )}
+          </section>
         </div>
       )}
     </main>

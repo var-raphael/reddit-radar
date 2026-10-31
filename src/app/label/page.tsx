@@ -1,4 +1,5 @@
 "use client";
+import Spinner from "../Spinner";
 import { useCallback, useEffect, useState } from "react";
 import { Check, Undo2, X } from "lucide-react";
 
@@ -68,7 +69,7 @@ export default function Label() {
       </details>
 
       {error && <p className="mt-4 rounded-xl bg-red-50 p-3 text-sm text-red-700">{error}</p>}
-      {loading && <p className="mt-6 text-sm text-zinc-500">Loading…</p>}
+      {loading && (<p className="mt-6 flex items-center gap-2 text-sm text-zinc-500"><Spinner />Loading…</p>)}
 
       {!loading && !post && !error && total > 0 && (
         <div className="mt-8 rounded-2xl bg-emerald-50 p-5 text-emerald-800">

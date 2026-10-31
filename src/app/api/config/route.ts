@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { resetBookmarks, addKeyword, ensureCompany, listCompanies, listKeywords, removeKeyword, type Kind } from "@/lib/keywords";
+import { getRunState } from "@/lib/runner";
+import { countPosts, deleteCompany, resetBookmarks, addKeyword, ensureCompany, listCompanies, listKeywords, removeKeyword, type Kind } from "@/lib/keywords";
 import { addSubreddit, listSubreddits, removeSubreddit } from "@/lib/subreddits";
 
 const KINDS = ["brand", "alias", "competitor", "topic"];
@@ -12,6 +13,7 @@ export function GET(req: Request) {
     companyId: id ?? null,
     keywords: id ? listKeywords(id) : [],
     subreddits: id ? listSubreddits(id) : [],
+    postCount: id ? countPosts(id) : 0,
   });
 }
 
@@ -45,6 +47,12 @@ export async function POST(req: Request) {
     }
     case "remove_subreddit":
       removeSubreddit(companyId, String(b.value ?? ""));
+      break;
+    case "delete_company":
+      if (getRunState().running) {
+        return NextResponse.json({ error: "A run is in progress. Try again when it finishes." }, { status: 409 });
+      }
+      deleteCompany(companyId);
       break;
     default:
       return bad("Unknown action");

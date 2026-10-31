@@ -1,3 +1,41 @@
 @import "tailwindcss";
 
 html { color-scheme: light; }
+
+/* Dark mode: remap the palette. Every existing utility class flips with it. */
+.dark {
+  color-scheme: dark;
+  --color-white: #18181b;
+  --color-zinc-50: #09090b;
+  --color-zinc-100: #27272a;
+  --color-zinc-200: #3f3f46;
+  --color-zinc-300: #52525b;
+  --color-zinc-400: #71717a;
+  --color-zinc-500: #a1a1aa;
+  --color-zinc-600: #d4d4d8;
+  --color-zinc-700: #e4e4e7;
+  --color-zinc-800: #f4f4f5;
+  --color-zinc-900: #f4f4f5;
+  --color-zinc-950: #fafafa;
+
+  --color-rose-100: rgb(244 63 94 / 0.18);
+  --color-rose-600: #fb7185;
+  --color-rose-700: #fda4af;
+  --color-orange-100: rgb(249 115 22 / 0.18);
+  --color-orange-700: #fdba74;
+  --color-violet-100: rgb(139 92 246 / 0.2);
+  --color-violet-700: #c4b5fd;
+  --color-emerald-50: rgb(16 185 129 / 0.12);
+  --color-emerald-100: rgb(16 185 129 / 0.18);
+  --color-emerald-700: #6ee7b7;
+  --color-emerald-800: #a7f3d0;
+  --color-sky-100: rgb(14 165 233 / 0.18);
+  --color-sky-700: #7dd3fc;
+  --color-red-50: rgb(239 68 68 / 0.12);
+  --color-red-700: #fca5a5;
+  --color-amber-700: #fcd34d;
+}
+
+/* Text on solid coloured fills stays white in dark mode. */
+.dark .bg-emerald-600,
+.dark .from-orange-500 { color: #fff; }
