@@ -29,3 +29,7 @@ export function listCompanies(): { id: number; name: string }[] {
     .prepare("SELECT id, name FROM companies ORDER BY name")
     .all() as unknown as { id: number; name: string }[];
 }
+
+export function removeKeyword(companyId: number, keywordId: number) {
+  getDb().prepare("DELETE FROM keywords WHERE id = ? AND company_id = ?").run(keywordId, companyId);
+}

@@ -14,3 +14,7 @@ export function listSubreddits(companyId: number): string[] {
     .all(companyId) as unknown as { name: string }[];
   return rows.map((r) => r.name);
 }
+
+export function removeSubreddit(companyId: number, name: string) {
+  getDb().prepare("DELETE FROM subreddits WHERE company_id = ? AND name = ?").run(companyId, name);
+}

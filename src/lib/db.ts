@@ -1,4 +1,5 @@
-import { DatabaseSync } from "node:sqlite";
+import type { DatabaseSync as DB } from "node:sqlite";
+const { DatabaseSync } = process.getBuiltinModule("node:sqlite") as typeof import("node:sqlite");
 import fs from "node:fs";
 import path from "node:path";
 
@@ -43,9 +44,9 @@ CREATE TABLE IF NOT EXISTS subreddits (id INTEGER PRIMARY KEY, company_id INTEGE
 CREATE INDEX IF NOT EXISTS idx_posts_feed ON posts (company_id, relevant, status);
 `;
 
-let db: DatabaseSync | null = null;
+let db: DB | null = null;
 
-export function getDb(): DatabaseSync {
+export function getDb(): DB {
   if (db) return db;
   fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
   db = new DatabaseSync(DB_PATH);
