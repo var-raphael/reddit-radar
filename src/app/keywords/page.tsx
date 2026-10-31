@@ -130,6 +130,7 @@ export default function Keywords() {
 
       {companyId && (
         <div className="mt-5 space-y-3">
+          <p className="text-sm text-zinc-500">Editing: <span className="font-semibold text-zinc-900">{companies.find((c) => c.id === companyId)?.name}</span></p>
           <Section title="Brand name" hint="The company's name." placeholder="e.g. Notion" items={ofKind("brand")} onAdd={addKw("brand")} onRemove={rmKw} />
           <Section title="Aliases" hint="Other names, products and domains." placeholder="e.g. notion.so" items={ofKind("alias")} onAdd={addKw("alias")} onRemove={rmKw} />
           <Section title="Competitors" hint="Alternatives people compare against." placeholder="e.g. Obsidian" items={ofKind("competitor")} onAdd={addKw("competitor")} onRemove={rmKw} />
