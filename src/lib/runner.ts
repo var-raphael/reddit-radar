@@ -9,6 +9,8 @@ type RunState = {
   kept: number;
   dropped: number;
   failed: number;
+  collectSec: number;
+  classifySec: number;
   error: string | null;
 };
 
@@ -16,7 +18,7 @@ type RunState = {
 const g = globalThis as unknown as { __radarRun?: RunState };
 const state: RunState = (g.__radarRun ??= {
   running: false, startedAt: null, finishedAt: null,
-  added: 0, kept: 0, dropped: 0, failed: 0, error: null,
+  added: 0, kept: 0, dropped: 0, failed: 0, collectSec: 0, classifySec: 0, error: null,
 });
 
 export function getRunState(): RunState {
@@ -30,23 +32,30 @@ export function startRun(opts: { cooldownMs?: number } = {}): { started: boolean
   }
   Object.assign(state, {
     running: true, startedAt: Date.now(), finishedAt: null,
-    added: 0, kept: 0, dropped: 0, failed: 0, error: null,
+    added: 0, kept: 0, dropped: 0, failed: 0, collectSec: 0, classifySec: 0, error: null,
   });
 
   void (async () => {
     const errors: string[] = [];
+    let t = Date.now();
     try {
-      const rows = await collectAll();
+      const { rows, errors: collectErrors } = await collectAll();
       state.added = rows.reduce((n, r) => n + r.added, 0);
+      errors.push(...collectErrors);
     } catch (e: any) {
       errors.push(`Collection: ${e.message}`);
     }
+    state.collectSec = Math.round((Date.now() - t) / 1000);
+
+    t = Date.now();
     try {
       const s = await classifyPending({ limit: Number(process.env.MAX_CLASSIFY_PER_RUN ?? 200) });
       state.kept = s.kept; state.dropped = s.dropped; state.failed = s.failed;
     } catch (e: any) {
       errors.push(`Classification: ${e.message}`);
     }
+    state.classifySec = Math.round((Date.now() - t) / 1000);
+
     state.error = errors.length ? errors.join(" | ") : null;
     state.running = false;
     state.finishedAt = Date.now();

@@ -33,3 +33,8 @@ export function listCompanies(): { id: number; name: string }[] {
 export function removeKeyword(companyId: number, keywordId: number) {
   getDb().prepare("DELETE FROM keywords WHERE id = ? AND company_id = ?").run(keywordId, companyId);
 }
+
+// New keywords may match posts we already skipped, so force a full rescan next run.
+export function resetBookmarks(companyId: number) {
+  getDb().prepare("DELETE FROM sync_state WHERE company_id = ?").run(companyId);
+}

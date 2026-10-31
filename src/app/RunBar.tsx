@@ -4,7 +4,7 @@ import { Play } from "lucide-react";
 
 type RunState = {
   running: boolean; startedAt: number | null; finishedAt: number | null;
-  added: number; kept: number; dropped: number; failed: number; error: string | null;
+  added: number; kept: number; dropped: number; failed: number; collectSec: number; classifySec: number; error: string | null;
 };
 
 function ago(ms: number) {
@@ -52,7 +52,7 @@ export default function RunBar({ onFinished }: { onFinished?: () => void }) {
         ) : s?.finishedAt ? (
           <p>
             <span className="font-medium">Last run {ago(s.finishedAt)}</span>
-            <span className="text-zinc-500"> · {s.added} new · {s.kept} kept · {s.dropped} dropped</span>
+            <span className="text-zinc-500"> · {s.added} new · {s.kept} kept · {s.dropped} dropped · collect {s.collectSec}s · classify {s.classifySec}s</span>
           </p>
         ) : (
           <p className="text-zinc-500">No run since the server started</p>

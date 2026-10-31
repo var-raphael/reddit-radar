@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { addKeyword, ensureCompany, listCompanies, listKeywords, removeKeyword, type Kind } from "@/lib/keywords";
+import { resetBookmarks, addKeyword, ensureCompany, listCompanies, listKeywords, removeKeyword, type Kind } from "@/lib/keywords";
 import { addSubreddit, listSubreddits, removeSubreddit } from "@/lib/subreddits";
 
 const KINDS = ["brand", "alias", "competitor", "topic"];
@@ -32,6 +32,7 @@ export async function POST(req: Request) {
     case "add_keyword":
       if (!text || !KINDS.includes(b.kind)) return bad("Enter a keyword");
       addKeyword(companyId, text, b.kind as Kind);
+      resetBookmarks(companyId);
       break;
     case "remove_keyword":
       removeKeyword(companyId, Number(b.keywordId));
