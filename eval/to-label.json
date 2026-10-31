@@ -1,0 +1,353 @@
+{
+ "company": "Notion",
+ "posts": [
+  {
+   "id": 1057,
+   "subreddit": "Evernote",
+   "title": "Sorting and Filtering Tables in Evernote",
+   "body": "Evernote have added table sorting and filtering and I've been trying it out.\n\nA few things I tried:\n\n* Setting a header row so the top row doesn't get sorted\n* Sorting a number column in ascending and descending order\n* Filtering a priority column to show high priority items or a combination of low and medium\n* Filtering a sample purchase order table by supplier and order status\n\nThe filters use the values already in your column and you can select all to bring the rows back and choose “None” to reset the sorting.\n\nTry it out."
+  },
+  {
+   "id": 401,
+   "subreddit": "ObsidianMD",
+   "title": "How can I setup Obsidian like this?",
+   "body": "I want to setup Obsidian on my iPhone to be faster/easier to use. I primarily want a way to just type notes quickly on iOS and keep them properly sorted.\n\nIdeally I want to click a button and immediately start typing a note that will go into vault or folder (whichever is better for organizing). For example I click a gift ideas button and it puts the note in a gift ideas folder/vault, or click another button to put the note in a journal folder/vault.\n\nIf possible I would like to choose the type by just selecting from a button as soon as I open the app, or from a widget in my Home Screen, so it only takes 1 or 2 clicks to start typing the note.\n\nSome other things that would be nice:\n\nTemplates for each type of note, so some can have a title and some don’t, and some insert the date automatically etc.\n\nPassword lock some categories of notes to view them, but be able to add new notes with no password.\n\nAn easy way to view and flip between notes in a category.\n\nA faster way to add indents/tabs. I like how I can swipe on a bullet point in Apple notes and would like something like that for all text.\n\nI am not sure if any of this is possible within Obsidian on iOS. And if it is possible I am not sure how to set it up."
+  },
+  {
+   "id": 208,
+   "subreddit": "Notion",
+   "title": "How do you use Notion in your personal workflows?",
+   "body": "I’ve been trying to limit my use of technology for basically everything these days. I used to have a Notion dashboard for every part of my life, business, and work — but now I just have a bunch of dashboards for the top-level of things.\n\n**As an example**: I have a dashboard for task management and I review that at the start of the day, write down task priorities on my daily journal — execute, then only mark that task as complete on the next day when I’m in front of the screen again. So it’s kind of like a routine.\n\nIn the past, I would just do everything in front of the screen, and I found that this was getting in the way of actually executing things.\n\nFor some reason, adding an analog practice to complement a digital interface has been one of the best productivity “hacks” (if you can call it so) for me so it made me wonder what other people’s personal systems looked like.\n\nI think we’re just so inundated by the templates and not so much the systems that make them useful."
+  },
+  {
+   "id": 1004,
+   "subreddit": "PKMS",
+   "title": "Software for PKMS",
+   "body": "Hey guys, I could use some help.  \nI’ve been switching between different note-taking and knowledge-management systems for a while, and I feel like I’ve tried almost everything.  \nWhat I’m looking for is actually pretty simple: **one place where I can save basically everything and reliably search it later.**  \nIdeally, the tool should have:  \nOCR for images and scanned documents  \nFull-text search inside PDFs  \nThe ability to save web links/pages and search the actual content, not just the title or URL  \nGood organization for notes, documents, images, links, references, etc.  \nFast and reliable search across everything  \nA modern interface  \nMinimal setup and maintenance  \nBecause I haven’t found one tool I’m completely happy with, my information is currently scattered across several different apps, which is exactly what I’m trying to avoid.  \nAfter searching Reddit, YouTube, blogs, and reviews, even in 2026 I keep coming back to the same conclusion: **Evernote still seems to be one of the best overall options for this particular use case.**  \nBut before I move everything back to Evernote, I’d love to hear what other people are using.  \nIs there anything that genuinely does all of this well without requiring a lot of tinkering and setup like Obsidian?  \nAnd ideally something with a more modern interface than DEVONthink. I know DEVONthink is extremely powerful, but visually it just isn’t for me.  \nBasically, I want a **“save everything now, find anything later”** system.  \nWhat would you recommend?"
+  },
+  {
+   "id": 312,
+   "subreddit": "Notiontemplates",
+   "title": "After a year of making Notion templates, I rebuilt my planners around the feedback I kept getting (+ 5 free copies of each)",
+   "body": ""
+  },
+  {
+   "id": 1181,
+   "subreddit": "productivity",
+   "title": "Got tired of typing in the same questions into Claude, made templates for getting personal news",
+   "body": "My routine for anything worth reading (news, reports, industry stuff) was: paste it into Claude, then type the same questions every time.\n\n*“What does this mean for me?”*  \n*“Does this affect my job or my money?”*  \n*“What should I actually do?”*\n\nEvery article, every day, retyped from memory, and worded slightly differently each time, so the answers weren’t consistent.\n\nWhat fixed it: **I wrote the questions down once and stopped improvising.**\n\nMy first versions were:\n\n**Personal:** How does this affect my money or work? What should I do next?\n\n**Both sides:** What’s the strongest case for? Against? What would prove each wrong?\n\n**Hype check:** What does this really mean? What’s overhyped? What should I do?  \n\n\nAdd your context once. Write a few lines about your job, your money and the decisions you’re facing, and keep them with the questions. Without them the answers are too generic.\n\nAlways use the same set for the same kind of reading. The answers become comparable, and you notice when something actually changes.\n\nEventually I built an mcp server to edit and access the questions sets for Claude to be part of other workflows also like my inbox. \n\n **Which questions do you keep retyping?**"
+  },
+  {
+   "id": 1074,
+   "subreddit": "Airtable",
+   "title": "Another One: An airtable sync tool one way, will you use it",
+   "body": "In my current company we sync some data to Airtable for Ops team to look at, they have complex views and automations.\n\nWe have built background queues with bullmq to sync and cron for daily sync. Writing code each time a new field pop up and continuous editing and deployment.\n\nIm building a small sdk which allows data mapping and job management using ui, retry, backoffs and logs too.\n\nI was thinking if more people need it can make a saas out of it. Could open source it but that would limit the potential if it has.\n\nIts working great for us, probably small companies out there who would like to automate this."
+  },
+  {
+   "id": 1021,
+   "subreddit": "productivity",
+   "title": "I'm 15 and building a free, visually minimalist alternative to Obsidian (using AI to code it). What features are you currently missing in your PKM?",
+   "body": ""
+  },
+  {
+   "id": 1027,
+   "subreddit": "productivity",
+   "title": "How to choose a single platform for your 'life system' and stick to it?",
+   "body": "I love using 'life systems' and they help me stay on track for my goals a lot. Here's how things went: \n\n\\- I used to bullet journal and that helped me keep my life on track\n\n\\- In 2020, I found Notion and an amazing course on systems that helped me set up a Notion system and helped me hit a bunch of my goals\n\n\\- At one point Notion started feeling too slow so I switched to Obsidian\n\n\\- When I realized I was spending too much time just maintaining the system and remembering how my system works, I moved on to Capacities\n\n\\- Was worried about sync issues and losing my data stored online on Capacities, and also got a Kindle Scribe so switched to that\n\n  \n\\- It seemed tedious to flip through pages on the Scribe so switched back to physical bullet journals\n\nNow I worry that I don't have my data backed up online in case I lose my notebook. So as a result, I've completely stopped using the system. \n\n\n\nI have a similar issue with journaling. Keep switching between these:\n\n* Day One because reviews say it's the best but there's no web version\n* Journey because it has a web version which is nice because I can use it on my work laptop without installing an app\n* Physical notebooks because I like the feel of writing but then no digital backup\n* Capacities because it is then stored with the rest of the context\n\nIf anyone can help suggest tips or a framework to make a decision, I'd be super grateful."
+  },
+  {
+   "id": 53,
+   "subreddit": "Notion",
+   "title": "Is it me, or is notion changed now that you can’t create links to pages",
+   "body": "Correct me if I’m wrong, but I used to be able to create a link to a page simply by clicking the three-dot menu and selecting something like “Create a new page” or “Create a new folder” (I can’t remember the exact name). This allowed me to create links to multiple pages easily.\n\nNow, it seems I have to create a page first and then choose which page it should be linked to. I find this new process quite frustrating compared to how simple it was before.\n\nIs anyone else experiencing the same issue? I know I might not be explaining it very clearly, but I hope you understand what I mean."
+  },
+  {
+   "id": 1016,
+   "subreddit": "productivity",
+   "title": "I've abandoned about 25 to-do tools since 2003. Here's what I took from it.",
+   "body": "The failures were all of the same.  At first, a new system is great, it's got some rules, you follow them, you get the few things you can think of right now recorded, and it's manageable.   I'd feel like I was in control again, getting things done.  Over time, following the rules would feel like makework, and the lists of things would get larger, meaning I had more things to consider, and each thing I hadn't gotten done would feel like an anchor around my neck.  One morning, I'd skip looking at it, because I knew what I needed to get done, I didn't need to look at the list. I'd usually go back, but then I would skip more mornings... and eventually I just gave up altogether.\n\n  \nMy first \"official\" todo system was just that.  I was writing \"TODO:\" lines into my software project using cvs (like git, but used when gen-x was young).  I used to read lifehacker religiously, so I started using evernote, then Moleskines with GTD, google keep, google tasks with CORE (I used to work at google), their internal buganizer as task manager, todoist (probably the first paid tool I used), omnifocus (and omniplan w/ gantt charts for a team I managed), asana (tried PARA), notion, roam (was really excited about that one), workflowy, mind maps, my cubicle whiteboard, even emailing myself each night three things to do when everything else broke down.\n\n  \nWhat I take from all of it was that the hard part was never about where you stored it, or what tags you used to mark it up, or having the right groups and abstractions.  What was difficult was the upkeep.  Every morning you need to prioritize what to do, then at the end of the day you need to review, add new things, then at the end of the week, review again, keep yourself honest.  What all of the systems were doing was trying to make all of that work tractable, repeatable.\n\n  \nNowadays, I use a tool to handle that part.  Something that I can just ramble into whenever something I need to do pops into my head.  It cleans it up, pulls out t"
+  },
+  {
+   "id": 269,
+   "subreddit": "Notion",
+   "title": "Can I change the display format of a formula date without converting it to text?",
+   "body": "Hi (: I'm trying to figure out if there's a way to control the display format of a date returned by a Notion formula and I'd be happy if anyone could help me with this.\n\nI have a formula property called **Next payment**, whose result is a Date, using a formula such as:\n\n`dateAdd(prop(\"Most recent payment\"), 4, \"months\")`\n\nThis correctly returns a Date (type: date), which is important because I need to use it for date filters, comparisons, dateAdd(), etc. However, Notion displays the result as`February 5, 2027`, while I'd like it to display as `05/02/2027`. \n\nI know I can use `formatDate(..., \"DD/MM/YYYY\")`, but that converts the result to text, which means I lose the ability to treat it as a Date.\n\nMy Notion workspace is already set to Day/Month/Year under the date format settings, but this doesn't seem to affect the display of dates returned by formula properties.\n\nIs there any way to keep the formula result as a Date while forcing its display format to DD/MM/YYYY? Or is the display format for formulas that return dates completely controlled by Notion and not customizable?"
+  },
+  {
+   "id": 314,
+   "subreddit": "Notiontemplates",
+   "title": "HabitHeroes - Notion PVP Habit Tracking made social",
+   "body": "Hi Folks,\n\nthis is not just the [template](https://locko.notion.site/Habit-Heroes-4af68539976e4998a538fb3f77d9cf03) but has an integration as engine behind it plus an embeddable html widget, which lives direclty in your Notion workspace below the habit tracking template. This allows for advanced streak tracking and statistics as well as for shared leaderboard and competitions where you can challenge other people! \n\nall of it is free, I built it for the love of habit tracking. the first official competition launched on October 1st, come and join us improving our lives [https://notionhabitheroes.com](https://notionhabitheroes.com)  \n"
+  },
+  {
+   "id": 183,
+   "subreddit": "Notion",
+   "title": "File-based Notion alternative",
+   "body": "Does anyone have the desire for a file-based Notion alternative? \n\nNotion x Obsidian. In the cloud with nice editing like Notion but based on files like Obsidian (markdown, csv, etc.). \n\nThat lets agents just dump whatever data is needed in there. \n\nI can't store my Excalidraws in Notion, for example. And neither can I store my Claude video projects. "
+  },
+  {
+   "id": 93,
+   "subreddit": "Notion",
+   "title": "I built a free Notion idea vault for creators because my notes app was where ideas went to...",
+   "body": ""
+  },
+  {
+   "id": 1178,
+   "subreddit": "PKMS",
+   "title": "Why I stopped using ChatGPT for serious research (and what happened when I moved 70+ technical papers into Google Notebook)",
+   "body": "Like many people doing deep research, I spent most of last year frustrated with conversational LLMs.\n\nYou feed a 60-page PDF into a standard chatbot interface, ask a specific methodological question, and get back a generic summary that glosses over the exact nuance you were looking for. Even worse, if you ask for page citations or specific data points, the model begins to hallucinate plausible-sounding numbers with absolute confidence.\n\nA few months ago, I decided to rethink my entire research stack and test whether Google NotebookLM could function as a true deterministic knowledge engine rather than a novelty summarizing tool.\n\nHere are the four counterintuitive lessons I learned after structuring repositories with over 100+ dense academic and technical sources:\n\n* **1. The \"Open Web\" is usually a liability, not an asset:** Standard LLMs are trained on the open internet, which means their default behavior is probabilistic generalization. For brainstorming, that is fine. For rigorous analysis, it is poison. NotebookLM forces a strict boundary: the model is blind to the rest of the world and can only reason across the exact documents you upload, virtually eliminating hallucinations.\n* **2. Triangulation beats linear reading:** The biggest mistake people make with NotebookLM is using it as an interactive table of contents. The real leverage happens when you force the system to cross-examine multiple sources that disagree with each other (e.g. asking the engine to identify the unstated assumptions in Source A challenged by Source B).\n* **3. Source curation requires taxonomy, not a document dump:** Dumping 50 random files creates cognitive sludge. The highest-density insights come from structuring three strict layers: Canonical Layer (peer-reviewed papers/textbooks), Operational Layer (field logs/internal memos), and Adversarial Layer (criticisms and edge-case failure reports).\n* **4. Audio Overviews are surprisingly good for auditory proofing:** Hearing two distinct sy"
+  },
+  {
+   "id": 991,
+   "subreddit": "PKMS",
+   "title": "Obsidian Bookmarks Sync Plugin",
+   "body": ""
+  },
+  {
+   "id": 1049,
+   "subreddit": "Evernote",
+   "title": "What are people using as a Skitch replacement on macOS?",
+   "body": "I've been using Skitch to capture screen shots to Evernote.  It's really convenient and works well.\n\nUnfortunately, it's Intel-based on macOS. Support for that on Apple Silicon Macs is going away next year.  I'd like to find a replacement screen-capture utility that works as well with Evernote and has a native Apple Silicon version.\n\nDoes anybody have any suggestions?\n\nThanks!"
+  },
+  {
+   "id": 1000,
+   "subreddit": "PKMS",
+   "title": "Help me pick something",
+   "body": "Hi. I am extremely lazy note taker and all I want is a note taking app that simply suggests a related existing note to whatever i am typing. Example, if i am writing an essay on Carrot, it should have a sidebar which shows all Carrot related notes I've jotted down. I simply cba to backlink or use double brackets while i am noting a thought as it derails my entire chain of thinking. I tried obsidian 's smart suggestions but it crashes more than i can count and it's paid version is ridiculously priced. "
+  },
+  {
+   "id": 247,
+   "subreddit": "Notion",
+   "title": "Best CRM in Notion @ the moment?",
+   "body": "I am considering swapping my old school CRM system with a simpler solution in Notion. What I would need however is the functionality to keep email interactions with the client in the CRM and as well to be able to sync meetings in CRM with the calendar of the specific sales person.\n\nAnyone knows the best CRM template for NOTION at the moment?"
+  },
+  {
+   "id": 993,
+   "subreddit": "PKMS",
+   "title": "I built an Obsidian plugin to sync browser bookmarks with a vault",
+   "body": ""
+  },
+  {
+   "id": 1025,
+   "subreddit": "productivity",
+   "title": "My desperate search for a solution that may not exist...",
+   "body": "I don't know that I can truly describe the amount of time and effort I've put into this effort, but I've yet to surrender to the fact that there isn't some solution out there that I just haven't been able to identify.  \n  \nAt the highest level, I'm seeking a task manager application that integrates closely with notes, attachments, and linked items.  I work primarily in a Mac environment, so MacOS/iOS compatibility is a must.  \n  \nTo elaborate a bit on the hangup I keep hitting, what I would like to do is easily create links/relationshis between my tasks/projects and other, existing items such as:  \n\\* Apple Calendar events  \n\\* Canvas-style notes  \n\\* Email messages/converstaion threads  \n\\* Other communications (verbal, texts, etc)  \n\\* Documents/links  \n  \nI've established countless setups using various apps, but everyone has frustratingly fallen short on at least one component.  The objective I'm looking to achieve is being able to select a task or project and have a single \"bucket\" of notes and linked resources related to it.  It's not the \"fill out this form\" tasks that are problematic; it's the complex tasks like \"Replace computers at location X\", which at any point in time may require references to email conversations, shipment tracking, invoice/payment follow-ups, installation dates, etc.  Ideally, in my example, I would be able to easily drag-and-drop items from their respective apps (mail client, sharepoint, calendar, MS Teams, messages, file manager, etc.)  to the task to create a visual reference with a backlink to the source item.\n\nCurrently, I am using GoodTask, which layers on top of Apple reminders, as a task manager, and it is AWESOME is almost every regard except having any kind of robust notes/attachments for to-do items.  As a workaround, I've created automation using Apple shortcuts that allows me to create both a new task (reminder) and an Apple note with a single click.  The script automates the creation of a link to the created apple note wit"
+  },
+  {
+   "id": 1082,
+   "subreddit": "Airtable",
+   "title": "Airtable announces major layoffs - Airtable announces major layoffs",
+   "body": ""
+  },
+  {
+   "id": 1023,
+   "subreddit": "productivity",
+   "title": "Rambling into obsidian daily note is the best habit I've built these 2 months",
+   "body": "**TL;DR: Start rambling all your thoughts into** **obsidian****,** **best way to increase productivity. Better than time tracking.**\n\nI'm all for time tracking / time blocking, I've tried several of those tools, measured every hour of my day, down to how much time I spent on the toilet LOL. It's rewarding to track my time but it's SO draining. Every other minute I have to trigger a shortcut to track what i'm doing.\n\nInstead, I've starting to just whip out my phone and open my daily note, turn on dictation, and just spew out my thoughts with no filter. Absolutely no filter, whatever I was doing / thinking / ideas. At the end of each day I get opencode to go through my daily note directly ifrom my Obsidian vault. Immediately it may not be very impactful, maybe it can do basic stuff like help you extract tasks, summarize your thoughts cleanly, help you set goals for tmr. Nothing crazy. \n\nBUT when you do it over a weeks, months, this journal gradually becomes your second brain. LLM can use that to build a Personal Charter for you, help you off load some (not all) decision making and bring clarity to your thoughts when you need it. If you're fancy with your prompts it can even use tags to built a heatmap of how you've spent your time with hour/day granularity.\n\nYou should honestly try this if you haven't. I've never been a \"keep a journal\" guy but now that LLM is so affordable and powerful, and the friction of \"writing things down\" is gone, there's no reason to not do this.\n\nI've gained so much clarity on my life and worked so much more productively just because of this habit.  \nI hope this helps you!"
+  },
+  {
+   "id": 995,
+   "subreddit": "PKMS",
+   "title": "Anyone likes using Obsidian?",
+   "body": ""
+  },
+  {
+   "id": 912,
+   "subreddit": "ObsidianMD",
+   "title": "I imported my Obsidian vault into a proactive knowledge layer — here's what surfaced",
+   "body": ""
+  },
+  {
+   "id": 979,
+   "subreddit": "PKMS",
+   "title": "Pellet app from Obsidian",
+   "body": ""
+  },
+  {
+   "id": 505,
+   "subreddit": "ObsidianMD",
+   "title": "Remotely Save for Obsidian: S3 and WebDAV Sync That Costs $0 on R2",
+   "body": ""
+  },
+  {
+   "id": 674,
+   "subreddit": "ObsidianMD",
+   "title": "Draw natively in Obsidian with Nexus Suite - early early stage",
+   "body": "Usage of AI:\n\nI used AI to help debug problems, especially in the drawing engine (pen input, latency, palm rejection) and to get the home grid done.\n\nEverything was initially designed and created by myself (debugging and optimizing with AI since this is a complete spare time project)\n\n\n\nNexus Suite was inspired by a lot of the great plugins that already exist. It's my attempt to replace many separate plugins in my vault with a single one, where I can set everything up in one consistent place and all the parts work together.\n\n\n\nThis is a small showcase of a personal project. It's very early and not usable yet, so there's nothing to download for now. Every part is a module you can turn off, and it runs on desktop and tablets. Sorry for the poor quality of the video.\n\n\n\nQuick Sketch\n\n\\- Draw straight into a note, saved as a plain SVG file\n\n\\- Different pens with their own size and colour, palettes, shape snapping, lasso and eraser\n\n\\- Endless paper, separate pages or an infinite mindmap canvas\n\n\\- Grid, lines, dots or isometric backgrounds\n\n\\- Palm rejection, finger gestures (pan, zoom, double tap to undo) and middle mouse to move around on desktop\n\n\n\nInk Capture\n\n\\- Photos of handwritten pages and PDFs from apps like Saber turn into searchable notes with tags\n\n\\- One hub for all scans and sketchbooks, with its own PDF viewer\n\n\n\nWriting\n\n\\- Multi-column text, side by side in a code block\n\n\\- Smart typography that turns -- into a dash and -> into an arrow while you type\n\n\\- Callouts with your own icon and colour per type\n\n\\- Hide single frontmatter properties you don't need to see\n\n\n\nGalaxy\n\n\\- The graph view in 3D on a star map\n\n\\- 2D mode, hover to see connections, adjustable forces and turn speed\n\n\n\nDashboard\n\n\\- A start page with quick actions, stats, habit trackers, clock and timer\n\n\\- Dashboard, galaxy and the capture hub can sit in the tab bar as icons\n\n\n\nLook\n\n\\- Two styles: cards or minimal, Notion-like\n\n\\- A lot of colour palettes, Catppuccin, Nord and Gruvbox"
+  },
+  {
+   "id": 83,
+   "subreddit": "Notion",
+   "title": "How are you using Notion to get better answers from Claude or ChatGPT?",
+   "body": ""
+  },
+  {
+   "id": 1015,
+   "subreddit": "productivity",
+   "title": "Looking for a journaling app for Windows that has journals as icons",
+   "body": "Hello! I really want to get that Paper on ios feel for windows. I'm mainly looking for a typing based app. I want to maintain a diary on that so I would really like if the notebook/journal has a journal icon. It would be a very big plus if the journals actually looking like journals, like if they have lined pages and similar aspect ratios instead of a big full screen page,,, but maybe such an app doesn't exist for windows. It should have good formatting tools as I mainly want to type. And I would like to sync it across windows and android andd it should have cloud save.\n\nDay One requires payment for syncing and Diarium is not free on windows as far as I know. So these won't work for me. While I use Notion for planning and organising, it does not have good formatting options, so it doesn't work for journaling for me. And I have some personal issues with OneNote. So I'm looking for and welcoming suggestions besides these. Thank you so much!"
+  },
+  {
+   "id": 252,
+   "subreddit": "Notion",
+   "title": "bdr interview at notion",
+   "body": "im interviewing for the bdr role at notion and i have 3 30 minute rounds to test business acumen, coachability, and character. has anyone gone through this process and what tips you might have to best prepare? any questions to prepare for?"
+  },
+  {
+   "id": 315,
+   "subreddit": "Notiontemplates",
+   "title": "Free Book Notes Template",
+   "body": "When I started reading War and Peace, I ran into a wall: **too many characters**.\n\nIn the first few chapters alone, about 30 important people are introduced, all with their own complex relationships. Remembering who was who felt nearly impossible.\n\nSo I started writing down names and key facts on paper. It actually gave me a huge advantage:\n\n1. Total clarity: If I forgot someone, my personal dossier was right there.\n2. Plot prediction: When you track a character’s habits, twists become obvious. (Pro tip: if there’s a German butler in a novel, and halfway through someone leaves a Bavarian sausage at a crime scene — you can guess the ending before the climax!)\n\nEventually, my paper lists got too messy. I kept coming across unfamiliar words, and I wanted a clear chronology of events (like tracking Andrei Bolkonsky at Austerlitz).\n\nWhat I did next: I moved everything into a structured Notion database, linked the records, and combined them into a single dashboard. It took me a couple of weeks to find the best layout.\n\nIf you also struggle with complex books and want a system to actually understand what you're reading, I made it completely free.\n\nNotion Gallery: [app.notion.com/templates/book-tracker-119](http://app.notion.com/templates/book-tracker-119)\n\n**My links if you're interested in template updates:**\n\nX - [https://x.com/oknehsorod](https://x.com/oknehsorod)\n\nBlog (How I use the tempalte. Now I'm testing it on Anna Karenina) - [https://books.korni.app/blog/](https://books.korni.app/blog/)"
+  },
+  {
+   "id": 1080,
+   "subreddit": "Airtable",
+   "title": "Airtable comments - how are you working around this garbage?",
+   "body": "Sorry to put it bluntly, but the comments component of Airtable is where the platform falls short as a project management tool. \n\nMy business is using Airtable liberally for 'jobs' and otherwise is using applications in the M365 ecosystem. \n\nI'd love to be about to query comments in Airtable alongside emails to get a thorough view of correspondence regarding the jobs being managed in Airtable, assigned to a specific job reference code. But staff just won't use Airtable's comments system because nobody even sees let along responds to the comments, and the pseudo-issues system with the 'resolved' button that hides the comment is useless. \n\nWhat are your workarounds, other than just leaving Airtable for something that does messaging properly?"
+  },
+  {
+   "id": 1075,
+   "subreddit": "Airtable",
+   "title": "Automations, Interfaces & Navigation",
+   "body": "Hi everyone,\n\nIt's Kyle from Product here with our fourth batch of updates. (If you missed what we've shipped before, catch up on our [15 updates in 15 days,](https://www.reddit.com/r/Airtable/comments/1wq28cf/hey_everyone_kyle_here_to_announce_15_new_product/) our [automations improvements,](https://www.reddit.com/r/Airtable/comments/1wvwvgd/automations_improvements/) and our [Calendars, Comments & Permissions](https://www.reddit.com/r/Airtable/comments/1x1pmd3/calendars_comments_permissions_11_updates/) bundle.)\n\nThis week we've shipped 15 updates covering Automations, Interfaces & Navigation, and a number of them retire the workarounds you probably built yourself. Here's what's new:\n\n \n\n***Automations that do more***\n\n**1. Trigger on a specific value change**\n\nFire an automation when a field changes from one specific value to another, (e.g. Status: In Process → Completed). No more workarounds with a manual \"previous value\" field and a record-updated trigger.\n\nhttps://i.redd.it/5gk2f06h1gwh1.gif\n\n**2. Return a single record you can use**\n\n*Find records* can now return just one record, ready to use in your next steps. No more scripting or array indexing to pull it out of a list.\n\nhttps://i.redd.it/fgcne1fi1gwh1.gif\n\n**3. Look up a record directly by its record ID**\n\n*Find records* can now match on the Airtable record ID directly. You no longer need to keep a separate Record ID field to compare the token against it.\n\nhttps://i.redd.it/5iljh28j1gwh1.gif\n\n \n\n***Improved Interfaces***\n\n**4. Freeze columns in list view**\n\nFreeze the first columns of a list so they stay visible as you scroll sideways, just like in Grid view.\n\nhttps://i.redd.it/tnbxrhak1gwh1.gif\n\n**5. Aggregations in Interface Lists**\n\nInterface List views and List pages now show field totals and summaries at the foot — sum, count, average and the rest — just like Grid views.\n\nhttps://i.redd.it/stfbqurl1gwh1.gif\n\n**6. Per-stack totals in Kanban**\n\nKanban views can now show a summary for each stack (e.g. t"
+  },
+  {
+   "id": 757,
+   "subreddit": "ObsidianMD",
+   "title": "Connect cards in canvas issue",
+   "body": "Just got started with obsidian:\n\nim using it to take class notes and decided to play around with the canvas to create a flowchart\n\nIm able to make cards for the subject and topics I want but for some reason im not able to connect the cards to each other. I have a macBook Air (yah i hate it too) and idk if the trackpad is the reason why but is there where plugins come in? Idk if any of yall macbook users had the same issue?\n\n  \nEDIT: SOLVED. found out that using the AnuPpuccin this bug occurs and just switched back to the original theme"
+  },
+  {
+   "id": 158,
+   "subreddit": "Notion",
+   "title": "Notion AI stopped responding after giving a strange reply. Has anyone else encountered this?",
+   "body": "Is anyone else having problems with Notion AI with Claude model lately? I’ve run into some issues:\n\nBefore it stopped responding, some replies became confusing and felt as though different models or assistants were involved in the same conversation—even though I had already specified the model I wanted to use.\n\nI can’t verify whether it actually switched models. That’s just how the responses came across, and I’m wondering whether anyone else has noticed something similar. \n\nI think that might be just about the model responsible for compacting. \n\nFor context, this was a long technical conversation involving code, GitHub releases, and updates to Notion pages. The chat history also showed “Context compacted” before the later issues, although I don’t know whether that’s related. As T&C of Notion AI already claimed that some functions part may pass to other model underground despite specifying a model....\n\n\n\nHas anyone experienced the similar situation?\n\n"
+  },
+  {
+   "id": 849,
+   "subreddit": "ObsidianMD",
+   "title": "Obsidian Web Clipper is great, but",
+   "body": "Obsidian Web Clipper is great, but it’s frustrating seeing so many community fixes sitting there without being reviewed.\n\nGreat tool, dumb little issues, and plenty of people willing to fix them  just not enough attention from Obsidian."
+  },
+  {
+   "id": 1084,
+   "subreddit": "Airtable",
+   "title": "What fields belong in an Airtable handoff record when one AI assistant passes work to another?",
+   "body": "A status field and a summary are not enough when another assistant has to resume a job. The next run may also need the exact source records, attachment revisions, decisions already accepted, external actions already completed, and a safe next step. Without that structure, an old summary can override newer data or a retry can repeat an action.\n\nI am considering one handoff table with linked source records plus fields for objective, scope, input revision timestamps, attachment names and checksums, accepted decisions, completed actions and their external IDs, unresolved questions, next action, owner, and last-verified time. The readable summary would be derived from those fields rather than becoming the authority.\n\nHow would you model this in Airtable? In particular, how do you prevent two assistants from claiming the same handoff, preserve the exact attachment version they used, and make an automation retry idempotent without turning every job into dozens of records?"
+  },
+  {
+   "id": 482,
+   "subreddit": "ObsidianMD",
+   "title": "New plugin: 'Relate' gives your notes durable two-way relationships",
+   "body": "Hot on the heels of my first plugin, [Home Cards](https://community.obsidian.md/plugins/home-cards), is my new contribution to the community. \n\nI've just released [Relate](https://community.obsidian.md/plugins/relate), a free plugin that gives your notes two-way relationships. When a project lists its notes in a property, each of those notes lists the project back. You can then browse and search your vault by those relationships, by date and (if you turn the feature on) by meaning.\n\nhttps://i.redd.it/yomo6ybprzwh1.png\n\n**Who it's for:** Anyone who connects notes through properties such as `project`, `parent`, `source` or `people` and is tired of keeping both sides up to date by hand. That covers researchers with sources and citations, writers keeping a world straight, and anyone running projects, meetings or a reading list in Obsidian. If your links live mostly in the text of your notes, Relate has less to offer you.\n\n**How it's built.** I wanted a plugin I could trust with a vault I've spent years on. Relate stores every link as a plain list-of-links property. It adds no custom syntax, hidden IDs or database. The Properties panel, Bases, the graph, backlinks and renames all work as before.\n\n* If you uninstall it, every link stays where it is and still reads correctly.\n* It shows you how many notes a bulk change will touch before it changes any, and you can undo every bulk change.\n* It runs on your device. It has no account, no telemetry and no ads.\n* It works on desktop and mobile.\n\n**Getting started**\n\nRun **Find links in your vault**. Relate lists the properties that already link your notes. Switch on the ones that describe a relationship and name the other side, for example `project` ↔ `notes`. If you don't use such properties yet, pick a ready-made setup: projects and notes, parents and children, places within places, people and meetings, sources and citations.\n\n![img](5z8u1djmrzwh1 \"Create your own custom relationships\")\n\n**Browse by relationship:** The relati"
+  },
+  {
+   "id": 1017,
+   "subreddit": "productivity",
+   "title": "I do a lot, but it's complete chaos - looking for tips",
+   "body": "Reaching out for a bit of advice or recommendations.\n\nI do full time university, few sidehustles and then proper projects that I dive into deeper on my own (I'm a physical product/industrial designer).\n\nIt's all becoming a little too overwhelming and lacks proper structure (I also have ADHD ofc), also feels like the lack of proper structuring of my work is the reason why I sometimes feel demotivated to pick up unfinished projects as the first few hours is usually to figure out where I left off and what was the main focus for the next work session.\n\nThings that I quite like and have worked for me so far, but they are still not there yet to be my daily helper tools:\n\n* \"Do-book\" I just put a bunch of checkboxes of what I have to do and try to come back to the little notebook every once in a while to check off what I've done  *(But there are times when I forget about it for a whole week or more)*\n* Post-its with small checkboxes regarding present task/project at hand  *(these I glue on my laptop by keyboard and so far love the most, they're always in front of me and I just seem to acknowledge/respect those tasks more for some reason) -* \n* I have calendar for University, which is synced with my courses *(I absolutely love that it's there and I can always look at it to know what I have in schedule for next days/week)*\n\n  \nWhat a dream version of me would love to adapt, but I seem to struggle really hard with:\n\n*  Calendar!! *(I tried to make my google calendar for the next week or two, but I can't seem to structure it in a way that I follow the schedule)*\n* Respecting time slots *(When I work, it happens way too often that I work beyond what I planned for in my mini schedule and just get sucked into the task - sometimes it's great, sometimes it's an obstacle)*\n* Committing to a platform for organizing documentation of my work/projects *(I have bunch of stuff in notes on my laptop, lengthy documentations in google docs, some materials like presentations in folders on lap"
+  },
+  {
+   "id": 1073,
+   "subreddit": "Airtable",
+   "title": "How are y'all handling High webhook volume with the rate limiting?",
+   "body": "Hey everyone, quick question for those handling high webhook volume into Airtable. How are you managing the 5 req/sec rate limit when bursts happen? Are you using sleep loops, or did you build custom middleware?"
+  },
+  {
+   "id": 978,
+   "subreddit": "PKMS",
+   "title": "Every note in our shared vault says how sure we are. 395 notes in, almost none say low",
+   "body": "We run our small company out of one Obsidian vault in git. The two of us work in it, and so do a few AI agents that draft, summarize and file things. Every note starts with the same properties, and one of them is confidence, set to high, medium or low.\n\nWe added it so a checked fact and a guess don't look the same. Before an agent answers from a note, it has to look at that field together with the date and status.\n\nWe counted this week.\n\n    206  high\n    130  medium\n      5  low\n     54  no value\n\nFive lows out of 395. One is a research note on a tax credit, built from an intermediary's slides and never checked against the law itself. One is a template that still needs a legal review. Three are sales leads that were never confirmed.\n\nOur reading is that low hardly gets used because nobody likes writing a note they'd call low. Either it's worth checking, and then it ends up medium, or it doesn't get written. So medium has turned into our real \"not sure\", and we read it that way now.\n\n53 of the 54 without a value have no properties at all. They're mostly older planning and project files. Our check script lists them, and they get fixed when someone touches the note.\n\nTwo things do more than the field alone.\n\nA conflict gets a link instead of a winner. When two sources disagree, the note gets a contradicts property pointing at the other note, plus a needs-review tag. 22 notes have one right now.\n\nA review flag needs a name. In early October we had 73 needs-review tags with nobody on them, the oldest from June. Since October 10 a new one needs an owner. So far 11 of 81 have one.\n\nDo you mark how sure you are in your notes? And if you do, does anyone actually use low?"
+  },
+  {
+   "id": 790,
+   "subreddit": "ObsidianMD",
+   "title": "Feedback and Pointers",
+   "body": "Hey yall, I made a study tracker site for the Hack The Box cybersecurity certs, and I recently added an Obsidian vault template for each cert to help people study for the exam. I'd love some feedback from people who know Obsidian better than I do, and ideas for anything that would be helpful to add.\n\nHow it's laid out:\n\n\\- A Home note with a quick start guide, a few exam tips, and links to community cheat sheets for that cert\n\n\\- A Notes folder with one note for every module in the course, in order, plus a Module Index\n\n\\- A Methodology folder with ten blank, numbered phase notes. I left them empty on purpose since everyone works differently, so you rename them and build them out as you study\n\n\\- A Templates folder with a Module Note and Methodology Phase template, hooked up to the core Templates plugin\n\n\\- A small CSS snippet for the colors and images\n\nIt only uses core features with no community plugins, so it works as soon as you open the folder. I did that on purpose so beginners don't have to set anything up, but I'm not sure it was the right call.\n\nThanks in advance, any feedback helps!"
+  },
+  {
+   "id": 1050,
+   "subreddit": "Evernote",
+   "title": "Can't drag and drop notes between notebooks?",
+   "body": "I've been using the app from the Windows Store, but it felt a bit funky so I deleted it and downloaded the Evernote-provided version. And now I can no longer drag and drop notes from one notebook into another.\n\nMy workflow is that every note that's a clip or a forward goes into a notebook called \"00 Inbox\" which makes it super easy to just keep stuff until I'm watching a movie or something and can sort notes into their correct notebook. This has worked flawlessly for YEARS AND YEARS. \n\nDoes Evernote no longer support drag and drop? "
+  },
+  {
+   "id": 1059,
+   "subreddit": "Evernote",
+   "title": "Is Evernote still usable offline as it used to be?",
+   "body": "I am Evernote user since 2012 and have some notebooks downloaded as offline. For example, all technical documentations acording to my cars, as I have underground parking lot and there is no mobile network. Today I wanted to check something and tried to check some PDF from offline notebook but Evernote just couldn't start. It hanged at start with logo and thats it. Older versions (pre Bending spoons) worked flawlessly.   Is Evernote usable offline on android mobile in 2026?   Or offline notebooks are just for....for what?"
+  },
+  {
+   "id": 1032,
+   "subreddit": "Evernote",
+   "title": "Evernote gets a new audio player",
+   "body": "I've recorded a short walkthrough of the new audio player in Evernote, using a podcast episode saved in a note.\n\nThe controls include:\n\n* Skip backwards or forwards by 15 seconds\n* Change playback speed\n* Scrub through the waveform to a particular point\n* See the recording's duration\n\nI use audio in Evernote for meetings and voice notes, but I also keep a few work-related podcasts there. I'll transcribe and summarise an episode, then pull out information I want to keep.\n\nThe skip buttons are useful for replaying a detail, while scrubbing lets you move further through a recording.\n\nHere's the demo:  \n[https://www.tamingthetrunk.com/p/evernote-gets-a-new-audio-player](https://www.tamingthetrunk.com/p/evernote-gets-a-new-audio-player)"
+  },
+  {
+   "id": 1065,
+   "subreddit": "Airtable",
+   "title": "Is Airtable Omni changing the need for frontend builders?",
+   "body": "I've been looking at Airtable Omni and wondering how it changes the case for tools like Softr adn Noloco.\n\nThe ability to build apps and interfaces from plain language prompts seems like a big shift for Airtable users.\n\nFor those who have tried Omni, where does it work well and where does it still fall short?\n\nDo dedicated frontend builders still offer advantages or can Omni cover most of those uses cases?"
+  },
+  {
+   "id": 1047,
+   "subreddit": "Evernote",
+   "title": "Five ways to create headers in Evernote",
+   "body": "I've been comparing five ways to add headers in Evernote:\n\n1. The Insert menu\n2. The formatting bar at the top of the note\n3. The floating formatting bar when you select text\n4. Markdown symbols, such as ## followed by a space\n5. Slash command aliases, such as /2 followed by Enter\n\nMy favourite is the last one. /2 gives you heading two, /3 gives you heading three and you can keep your hands on the keyboard.\n\nYou can also put your cursor at the start of an existing line, type /3 and press Enter to turn that text into a heading.\n\nOnce you've got headers, you can collapse sections, move a collapsed section with its contents or copy a link to a particular header."
+  },
+  {
+   "id": 1020,
+   "subreddit": "productivity",
+   "title": "I just worked for 7 hours and got nothing done.",
+   "body": "Problem:\n\n* Its so easy to get lost in the bottomless pit of “working” for hours and accomplishing nothing. Heres how to make sure that doesn’t happen again:\n\n\n\n\n\nSolution:\n\n\n\n1. Have a task to work on\n\n   * I don’t mean a vague list of tasks that you made brain dumping everything into a notion database or a note sheet, and when its time to pick one it says “work on marketing”. No, you need a SPECIFIC task to work on…\n   * chances are you’re not gonna be able to make more than 3 at a time, and even that will require a lot of mental energy, so max I like to have 1-3 on my “to-do” list.\n      * ex: instead of “go to market” do “go to whole foods, get whole milk, ground turkey, protein powder, blueberries.”\n      * Make it so all you have to do is execute.\n\n\n\n2. EVERY 30ISH MINS MAKE SURE YOU WERE ON TASK\n\n   * Yes its all caps cause I’m yelling at you.\n   * This will change your life. I got this advice from Alex Hormozi and upon implementation my productivity skyrocketed.\n   * He says every 15 mins but i find the sweet spot for me to be around 30.\n   * In the notes portion of the calendar block you created just write what you did for that portion of time\n      * Ex: 9:00-9:30: Wrote 2 paragraphs for my essay. Fully locked in, not distracted.\n      * 9:30-10:00: Wrote 1 more paragraph, bit less focused, picked up my phone once.\n      * 10:00-10:30: Wrote 3 paragraphs, ya boi is locked in.\n\n\n\nIf you can build a habit out of these 2 techniques your productivity will improve i promise you."
+  },
+  {
+   "id": 1045,
+   "subreddit": "Evernote",
+   "title": "A few highlights from September in Evernote. 🍂",
+   "body": "📄 Edit, merge, and split PDFs right inside your notes\n\n🖨️ Add page breaks and get cleaner prints and PDF exports\n\n📊 Sort, filter, and style your tables\n\n🗓️ Ask AI Assistant to create, move, or delete calendar events\n\n📱 Edit your notes with AI Assistant on your phone\n\n🎙️ Older recordings now get transcribed too, so you can search everything that was said\n\nSee these updates and more in action and a sneak peek at what’s coming next.  \n\n\n"
+  },
+  {
+   "id": 1092,
+   "subreddit": "Airtable",
+   "title": "I built an Outlook/Gmail add-in for Airtable for professionals to connect their inbox to their operating system",
+   "body": "Hi there! I'm a former practicing lawyer who now builds systems/custom tech for other lawyers.   \n  \nEarlier this year, I built an Airtable-based system for a law firm to transition them away from their original practice management software. \n\nAirtable just has a lot more capabilities for customization and centralizing her entire workflows, but in the process we lost one thing: the Gmail add-on her original software included, which allowed her to attach client communications to matters (projects basically) from her inbox. \n\nI figured I'd just rebuild one for her, but it turns out the scope kept expanding as there were multiple workflows around this small email extension.\n\nFor example, while reading an email, lawyers usually might want to\n\n* attach it to an existing client/project/matter\n* create a task based on the email and set the assignee, due date, priority, etc.\n* log time entries against the right project\n* record an expense from receipts\n* save specific attachments\n* eventually, pull relevant context from the client/project Airtable back into the inbox before replying\n\nSo I turned that small product into [infiler.io](https://infiler.io/) to distribute it to other lawyers and turns out people LOVED the beta. I expanded the initial integrations beyond Airtable (Monday, Harvest, Dropbox), so that people can connect their CRM, tasks management system, accounting system, document storage.\n\nRight now, I'm just experimenting to understand if other Airtable users/professionals see value in this, before I expand the scope further as I have a long feature and integrations list. \n\nIf you're someone who uses Airtable as your operating system, I'd love to know what you think (it's free to use currently) and what capabilities you'd like to see in it. \n\nFor Outlook, you can download [here](https://marketplace.microsoft.com/en-us/product/WA200012053) and for Gmail, just DM me and I'll provide you an access."
+  },
+  {
+   "id": 969,
+   "subreddit": "PKMS",
+   "title": "Commonplacing in Software ? Yay or Nay. I realised that I had been doing so in Obsidian",
+   "body": ""
+  },
+  {
+   "id": 1044,
+   "subreddit": "Evernote",
+   "title": "Best Evernote alternative in 2026?",
+   "body": "# I have been using Evernote and raindrop consistently for many years as im sure many of you have, i have a soft spot for Evernote BUT has anyone actually found a BETTER tool in 2026?"
+  },
+  {
+   "id": 1077,
+   "subreddit": "Airtable",
+   "title": "Migration Plan From Bending Spoons Airtable to ???",
+   "body": "We started building a couple of pretty simple bases in Airtable June, 2026, including a standalone company phone record log. Our users never loved the UI but we continued to burn time and $ to refine.\n\nHaving actively experienced multiple Bending Spoon takeovers, we are getting out along with our enterprise partners. \n\nOur question becomea where to move this phone record project next.  It’s just manual entry, contacts, queries and review. All static, no “AI”.\n\nWas thinking of just storing and building tables in MS365/ address book + Sharepoint and adding a ProjectBuilder interface or GSheets and AppSheet front end.  Any other quick, relatively simple ideas we should consider?"
+  },
+  {
+   "id": 313,
+   "subreddit": "Notiontemplates",
+   "title": "Finance Tracker",
+   "body": "Hey everyone!\n\nI made my Personal Finance Manager, a system to manage personal finances in one place.\n\nIt lets you track income, expenses, transfers, subscriptions, and a wishlist, with monthly and calendar views to see where your money goes and plan ahead.\n\n\\*\\*What’s included:\\*\\*\n\n\\- Income & expense tracking\n\n\\- Accounts & transfers\n\n\\- Monthly + calendar views\n\n\\- Subscription tracking\n\n\\- Wishlist\n\n\\*\\*Preview:\\*\\*  \n\n👉 https://scalloped-stem-91f.notion.site/Finance-Tracker-Preview-30c2df21baf68147bb27e3f7a20368e6\n\n\\*\\*Try it here\\*\\* : 30% OFF\n\n👉 https://ko-fi.com/elharis/shop\n\nFeedback is very welcome!"
+  },
+  {
+   "id": 595,
+   "subreddit": "ObsidianMD",
+   "title": "should I stop using folders and tags and only use MOCs in obsidian or what to do exactly to organize in obsidian",
+   "body": "should I stop using folders and tags and only use MOCs in obsidian or what to do exactly to organize in obsidian "
+  },
+  {
+   "id": 1058,
+   "subreddit": "Evernote",
+   "title": "Evernote New Privacy Policy, ToS and Agreements",
+   "body": "Received a mail today about updates to Evernote's Privacy Policy, Terms of Service and Agreements changing on 1 December 2026.\n\n  \nAs expected and mentioned in the message body, the EU/UK/Switzerland have different ones, leading one to believe that the tighter user protections afforded by these territories is not extended to the rest of their user base.\n\n\n\nHowever it's spun in the highlights reel and vague diplomatic language of the message body, it's always a concern that these kinds of changes could lead to degradation in privacy standards or benefits to users, or could lead to other less preferable outcomes for users.\n\n  \nSince Evernote was known in the past for its better privacy policy than other similar apps, its especially a potential concern here.\n\n\n\nHas anyone had a chance to read through and compare the new policy/terms/agreements to the current terms and have any plain-language observations on their potential implications for privacy, benefits and other outcomes for users (inside and outside of those regions mentioned)?"
+  }
+ ]
+}

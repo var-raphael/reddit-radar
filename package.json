@@ -9,7 +9,9 @@
     "lint": "eslint",
     "collect": "tsx scripts/collect.ts",
     "seed:notion": "tsx scripts/seed-notion.ts",
-    "classify": "tsx --env-file=.env scripts/classify.ts"
+    "classify": "tsx --env-file=.env scripts/classify.ts",
+    "eval": "tsx --env-file=.env scripts/evaluate.ts",
+    "test": "tsx --test tests/*.test.ts"
   },
   "dependencies": {
     "lucide-react": "^1.65.0",
