@@ -15,7 +15,7 @@ Demo company: **Notion**. Design decisions, evaluation results, cost and known l
 
 Requires Node 22.13 or newer (SQLite is built in, nothing to compile; developed on Node 26).
 
-    git clone <repo-url>
+    git clone https://github.com/var-raphael/reddit-radar
     cd reddit-radar
     npm install
     cp .env.example .env
