@@ -8,6 +8,6 @@ export function GET(req: Request) {
 
 export async function POST() {
   const cooldown = Number(process.env.RUN_COOLDOWN_SEC ?? 120) * 1000;
-  const r = startRun({ cooldownMs: cooldown });
+  const r = startRun({ cooldownMs: cooldown, trigger: "button" });
   return NextResponse.json(r, { status: r.started ? 202 : 409 });
 }

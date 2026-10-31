@@ -17,6 +17,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "CRON_SECRET is not set on the server" }, { status: 503 });
   }
   if (auth === "denied") return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  const r = startRun();
+  const r = startRun({ trigger: "cron" });
   return NextResponse.json(r, { status: r.started ? 202 : 409 });
 }

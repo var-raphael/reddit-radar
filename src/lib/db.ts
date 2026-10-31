@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS posts (
 );
 CREATE TABLE IF NOT EXISTS subreddits (id INTEGER PRIMARY KEY, company_id INTEGER NOT NULL REFERENCES companies(id), name TEXT NOT NULL COLLATE NOCASE, UNIQUE (company_id, name));
 CREATE TABLE IF NOT EXISTS sync_state (company_id INTEGER NOT NULL REFERENCES companies(id), subreddit TEXT NOT NULL COLLATE NOCASE, newest_utc INTEGER NOT NULL, PRIMARY KEY (company_id, subreddit));
+CREATE TABLE IF NOT EXISTS runs (id INTEGER PRIMARY KEY, trigger TEXT, started_at TEXT, finished_at TEXT, added INTEGER, kept INTEGER, dropped INTEGER, failed INTEGER, collect_sec INTEGER, classify_sec INTEGER, errors TEXT);
 CREATE INDEX IF NOT EXISTS idx_posts_feed ON posts (company_id, relevant, status);
 `;
 

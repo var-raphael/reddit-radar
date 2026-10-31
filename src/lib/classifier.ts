@@ -1,4 +1,5 @@
 import { getDb } from "./db";
+import { log } from "./log";
 import { listKeywords } from "./keywords";
 import { getProvider } from "./llm";
 import type { LlmProvider, ChatMessage } from "./llm/types";
@@ -126,6 +127,7 @@ export async function classifyPending(
             result = parseClassification(content);
           } catch (e: any) {
             if (attempt === 1) throw e;
+            log("warn", "classify", "reply rejected, asking model to repair", { post: row.id, error: e.message });
             // Repair: show the model what was wrong with its own reply.
             convo = [
               ...messages,
@@ -144,10 +146,13 @@ export async function classifyPending(
         }
       } catch (e: any) {
         stats.failed++; // left unclassified; retried on the next run
-        console.error(`post ${row.id}: ${e.message}`);
+        log("error", "classify", "post failed, left unclassified", { post: row.id, error: e.message });
       }
     }
   }
+  log("info", "classify", "starting", { posts: rows.length, model: provider.name });
+  const t0 = Date.now();
   await Promise.all(Array.from({ length: opts.concurrency ?? Number(process.env.LLM_CONCURRENCY ?? 1) }, worker));
+  log(stats.failed ? "warn" : "info", "classify", "finished", { ...stats, ms: Date.now() - t0 });
   return stats;
 }

@@ -4,6 +4,7 @@ import { listSubreddits } from "./subreddits";
 import { matchPost } from "./matcher";
 import { arcticShift } from "./sources/arcticShift";
 import type { NormalizedPost, PostSource } from "./sources/types";
+import { log } from "./log";
 
 const OVERLAP_SEC = 3600; // re-check the last hour in case the archive indexed late
 
@@ -70,6 +71,9 @@ export async function collectAll(
     for (const sub of listSubreddits(c.id)) jobs.push({ c, kws, sub });
   }
 
+  const t0 = Date.now();
+  log("info", "collect", "starting", { source: source.name, subreddits: jobs.length, concurrency, full: !!opts.full });
+
   const rows: CollectRow[] = [];
   const errors: string[] = [];
   let next = 0;
@@ -77,7 +81,7 @@ export async function collectAll(
   async function worker() {
     while (next < jobs.length) {
       const { c, kws, sub } = jobs[next++];
-      const t0 = Date.now();
+      const t = Date.now();
       try {
         const mark = opts.full ? null : getBookmark(c.id, sub);
         const since = mark ? Math.max(windowStart, mark - OVERLAP_SEC) : windowStart;
@@ -94,13 +98,21 @@ export async function collectAll(
           const newest = Math.max(...posts.map((p) => p.created_utc));
           setBookmark(c.id, sub, Math.max(newest, mark ?? 0));
         }
-        rows.push({ company: c.name, subreddit: sub, fetched: posts.length, matched, added, ms: Date.now() - t0 });
+        const ms = Date.now() - t;
+        rows.push({ company: c.name, subreddit: sub, fetched: posts.length, matched, added, ms });
+        log("info", "collect", "subreddit done", { company: c.name, subreddit: sub, fetched: posts.length, matched, added, ms });
       } catch (e: any) {
         errors.push(`r/${sub}: ${e.message}`);
+        log("error", "collect", "subreddit failed", { company: c.name, subreddit: sub, error: e.message });
       }
     }
   }
 
   await Promise.all(Array.from({ length: Math.max(1, concurrency) }, worker));
+  log(errors.length ? "warn" : "info", "collect", "finished", {
+    ms: Date.now() - t0,
+    added: rows.reduce((n, r) => n + r.added, 0),
+    failed_subreddits: errors.length,
+  });
   return { rows, errors };
 }

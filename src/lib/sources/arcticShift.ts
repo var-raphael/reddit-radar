@@ -1,4 +1,5 @@
 import type { NormalizedPost, PostSource } from "./types";
+import { log } from "../log";
 
 const BASE = "https://arctic-shift.photon-reddit.com/api/posts/search";
 const UA = process.env.REDDIT_USER_AGENT ?? "reddit-radar/0.1 (take-home demo)";
@@ -13,9 +14,12 @@ async function getJson(url: string, attempt = 0): Promise<any> {
   if (err) {
     const retryable = /timeout|slow down|429|HTTP 5\d\d/i.test(String(err));
     if (retryable && attempt < 4) {
-      await sleep(2000 * 2 ** attempt);
+      const wait = 2000 * 2 ** attempt;
+      log("warn", "source", "archive error, retrying", { error: String(err), attempt: attempt + 1, wait_ms: wait });
+      await sleep(wait);
       return getJson(url, attempt + 1);
     }
+    log("error", "source", "archive request failed", { error: String(err), status: res.status });
     throw new Error(`Arctic Shift error: ${err}`);
   }
   return json;
@@ -47,6 +51,7 @@ export const arcticShift: PostSource = {
       if (before) params.set("before", String(before));
       const json = await getJson(`${BASE}?${params}`);
       const rows: any[] = json?.data ?? [];
+      log("debug", "source", "page fetched", { subreddit, page: page + 1, rows: rows.length });
       if (rows.length === 0) break;
       let oldest = Infinity;
       for (const d of rows) {

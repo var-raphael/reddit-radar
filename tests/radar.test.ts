@@ -59,7 +59,7 @@ test("parser rejects bad output", () => {
     '{"relevant":"yes","reason":"x"}',
     '{"category":"complaint","reason":"x"}',
   ];
-  for (const b of bad) assert.throws(() => cls.parseClassification(b), undefined, `should reject: ${b}`);
+  for (const b of bad) assert.throws(() => cls.parseClassification(b), Error, `should reject: ${b}`);
 });
 
 // ---------- keyword matcher ----------

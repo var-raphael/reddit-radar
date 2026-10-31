@@ -14,9 +14,22 @@ function ago(ms: number) {
   return m < 1 ? "just now" : m < 60 ? `${m} min ago` : `${Math.floor(m / 60)}h ago`;
 }
 
+type PastRun = {
+  id: number; trigger: string; started_at: string; added: number; kept: number; dropped: number;
+  failed: number; collect_sec: number; classify_sec: number; errors: string | null;
+};
+
 export default function RunBar({ onFinished }: { onFinished?: () => void }) {
   const [s, setS] = useState<RunState | null>(null);
   const [msg, setMsg] = useState("");
+  const [runs, setRuns] = useState<PastRun[]>([]);
+
+  const loadRuns = useCallback(async () => {
+    try {
+      const r = await fetch("/api/runs", { cache: "no-store" });
+      setRuns((await r.json()).runs ?? []);
+    } catch { /* ignore */ }
+  }, []);
 
   const poll = useCallback(async () => {
     try {
@@ -25,7 +38,7 @@ export default function RunBar({ onFinished }: { onFinished?: () => void }) {
     } catch { /* ignore */ }
   }, []);
 
-  useEffect(() => { poll(); }, [poll]);
+  useEffect(() => { poll(); loadRuns(); }, [poll, loadRuns]);
 
   useEffect(() => {
     if (!s?.running) return;
@@ -35,7 +48,7 @@ export default function RunBar({ onFinished }: { onFinished?: () => void }) {
 
   const wasRunning = s?.running;
   useEffect(() => {
-    if (wasRunning === false && s?.finishedAt) onFinished?.();
+    if (wasRunning === false && s?.finishedAt) { onFinished?.(); loadRuns(); }
   }, [wasRunning, s?.finishedAt]); // eslint-disable-line react-hooks/exhaustive-deps
 
   async function start() {
@@ -47,7 +60,8 @@ export default function RunBar({ onFinished }: { onFinished?: () => void }) {
   }
 
   return (
-    <div className="mb-5 flex items-center justify-between gap-3 rounded-2xl bg-white px-4 py-3 shadow-sm ring-1 ring-zinc-200">
+    <div className="mb-5">
+    <div className="flex items-center justify-between gap-3 rounded-2xl bg-white px-4 py-3 shadow-sm ring-1 ring-zinc-200">
       <div className="min-w-0 text-sm">
         {s?.running ? (
           <p className="flex items-center gap-2 font-medium">
@@ -72,6 +86,23 @@ export default function RunBar({ onFinished }: { onFinished?: () => void }) {
         {s?.running ? <Spinner /> : <Play className="h-4 w-4" />}
         {s?.running ? "Running" : "Run now"}
       </button>
+    </div>
+    {runs.length > 0 && (
+      <details className="mt-2 rounded-2xl bg-white px-4 py-2 text-sm ring-1 ring-zinc-200">
+        <summary className="cursor-pointer text-zinc-500">Recent runs</summary>
+        <ul className="mt-2 space-y-2">
+          {runs.map((r) => (
+            <li key={r.id} className="border-t border-zinc-100 pt-2 first:border-0 first:pt-0">
+              <p>
+                <span className="font-medium">{new Date(r.started_at).toLocaleString()}</span>
+                <span className="text-zinc-500"> · {r.trigger} · {r.added} new · {r.kept} kept · {r.dropped} dropped{r.failed ? ` · ${r.failed} failed` : ""} · {r.collect_sec}s + {r.classify_sec}s</span>
+              </p>
+              {r.errors && <p className="mt-1 whitespace-pre-wrap break-words text-xs text-red-700">{r.errors.split(" | ").join("\n")}</p>}
+            </li>
+          ))}
+        </ul>
+      </details>
+    )}
     </div>
   );
 }
