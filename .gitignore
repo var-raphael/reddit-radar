@@ -44,3 +44,5 @@ data/*.db*
 .env
 classify.log
 nohup.out
+
+!.env.example
