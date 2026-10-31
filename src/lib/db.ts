@@ -1,4 +1,5 @@
 import type { DatabaseSync as DB } from "node:sqlite";
+import { seedIfEmpty } from "./seed";
 const { DatabaseSync } = process.getBuiltinModule("node:sqlite") as typeof import("node:sqlite");
 import fs from "node:fs";
 import path from "node:path";
@@ -53,5 +54,6 @@ export function getDb(): DB {
   db = new DatabaseSync(DB_PATH);
   db.exec("PRAGMA journal_mode = WAL; PRAGMA foreign_keys = ON;");
   db.exec(SCHEMA);
+  seedIfEmpty(db);
   return db;
 }
