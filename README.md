@@ -2,6 +2,8 @@
 
 A small social-listening tool. Give it a company (name, aliases, competitors, topics) and a list of subreddits. It collects matching Reddit posts, uses an LLM to drop the off-topic ones, labels the rest (category, sentiment, urgency 1-5, one-line reason), and shows them in a feed you can filter and work through.
 
+**Live demo:** https://reddit-radar-18o4.onrender.com (the first load after idle can take up to a minute; the database reloads from the seed data whenever the service restarts).
+
 Demo company: **Notion**. Design decisions, evaluation results, cost and known limits are in [DECISIONS.md](DECISIONS.md).
 
 ## What it does
@@ -72,11 +74,11 @@ Reddit shut off unauthenticated `.json` access in 2026 and closed self-service A
 
     npm test
 
-14 tests, no network, no keys, throwaway database. They cover LLM output parsing (including malformed replies), keyword matching, deduplication, the dismiss rule, and the classifier's handling of bad model output using a fake model.
+15 tests, no network, no keys, throwaway database. They cover LLM output parsing (including malformed replies), keyword matching, deduplication, the dismiss rule, and the classifier's handling of bad model output using a fake model.
 
 ## Evaluation
 
-The filter and classifier were checked against a hand-reviewed answer key of 58 random posts. The saved report is in `eval/`, and the analysis is in DECISIONS.md. To re-run on a labeled sample: `npm run eval` (labels are made on the `/label` page and live in the local database).
+The filter and classifier were checked against an answer key of 58 random posts, drafted by Claude and reviewed by me. The saved report is in `eval/`, and the analysis is in DECISIONS.md. To re-run on a labeled sample: `npm run eval` (labels are made on the `/label` page and live in the local database).
 
 ## Scripts
 
