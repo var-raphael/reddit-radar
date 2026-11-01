@@ -54,12 +54,15 @@ export default function Feed() {
   const [category, setCategory] = useState("");
   const [minUrgency, setMinUrgency] = useState(0);
   const [tab, setTab] = useState<"new" | "handled">("new");
+  const [sort, setSort] = useState<"urgent" | "new">("urgent");
+  const [limit, setLimit] = useState(100);
+  const [total, setTotal] = useState(0);
   const [posts, setPosts] = useState<Post[]>([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
   const load = useCallback(async () => {
-    const q = new URLSearchParams({ status: tab });
+    const q = new URLSearchParams({ status: tab, sort, limit: String(limit) });
     if (company) q.set("company", String(company));
     if (category) q.set("category", category);
     if (minUrgency) q.set("minUrgency", String(minUrgency));
@@ -69,6 +72,7 @@ export default function Feed() {
       const j = await r.json();
       setCompanies(j.companies);
       setPosts(j.posts);
+      setTotal(j.total ?? j.posts.length);
       if (!company && j.companyId) setCompany(j.companyId);
       setError("");
     } catch (e: any) {
@@ -76,7 +80,7 @@ export default function Feed() {
     } finally {
       setLoading(false);
     }
-  }, [company, category, minUrgency, tab]);
+  }, [company, category, minUrgency, tab, sort, limit]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -97,7 +101,7 @@ export default function Feed() {
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Feed</h1>
           <p className="text-sm text-zinc-500">
-            {loading ? "Loading…" : `${posts.length} ${tab === "new" ? "open" : "handled"} post${posts.length === 1 ? "" : "s"}`}
+            {loading ? "Loading…" : `${total} ${tab === "new" ? "open" : "handled"} post${total === 1 ? "" : "s"}${posts.length < total ? ` · showing ${posts.length}` : ""}`}
           </p>
         </div>
         {companies.length > 1 && (
@@ -162,7 +166,20 @@ export default function Feed() {
         </div>
       )}
 
-      <ul className="mt-5 space-y-3">
+      <div className="mt-4 flex items-center gap-1 text-sm">
+        <span className="mr-1 text-zinc-500">Sort</span>
+        {([["urgent", "Most urgent"], ["new", "Newest"]] as const).map(([k, label]) => (
+          <button
+            key={k}
+            onClick={() => { setSort(k); setLimit(100); }}
+            className={`rounded-md px-2 py-1 ${sort === k ? "bg-zinc-900 text-white" : "text-zinc-500 hover:bg-zinc-200/60"}`}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
+      <ul className="mt-3 space-y-3">
         {posts.map((p) => (
           <li key={p.id} className="flex overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-zinc-200">
             <div className={`w-1.5 shrink-0 ${URG_BAR[p.urgency]}`} />
@@ -198,6 +215,14 @@ export default function Feed() {
           </li>
         ))}
       </ul>
+      {posts.length < total && (
+        <button
+          onClick={() => setLimit((l) => l + 100)}
+          className="mt-4 w-full rounded-xl bg-white py-2.5 text-sm font-medium ring-1 ring-zinc-300"
+        >
+          Show more ({total - posts.length} left)
+        </button>
+      )}
     </main>
   );
 }
