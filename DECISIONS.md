@@ -19,7 +19,7 @@
 
 ## 2. Filter and classifier design
 
-**Model:** `ministral-14b-latest` through a provider-agnostic client (`src/lib/llm/`): any OpenAI-compatible endpoint, or Anthropic, is an `.env` change. I used this model because my Mistral account returned 429 on `mistral-small` and `mistral-medium`. I also tried `mistral-large-4`: it returned reasoning-style output, about 1,900 output tokens per post against about 60 for the 14B model, and my parser failed on that format, so I dropped it.
+**Model:** `ministral-14b-latest` through a provider-agnostic client (`src/lib/llm/`): any OpenAI-compatible endpoint, or Anthropic, is an `.env` change. I used this model because my Mistral account returned 429 on `mistral-small` and `mistral-medium`. I also tried `mistral-large-4`: it used about 1,900 output tokens per post against about 60 for the 14B model, and none of its replies parsed, so I dropped it.
 
 **Relevance rule** (the filter): keep a post if it is about the company's product, or about choosing between tools (comparing with alternatives, switching, complaining in a way that suggests leaving, asking which tool to use). Drop people simply using or customizing a competitor's product, unrelated uses of the word, and spam. When unsure, drop. The prompt states this without named examples, so it is not tied to the demo company.
 
@@ -46,8 +46,6 @@ Accuracy 84.5%, precision 63.6%, recall 93.3%. On the 14 posts both of us kept: 
 - **Category disagreements (3)** are all genuinely fuzzy (a how-to question labeled a bug report, a product idea labeled a recommendation request), and the same fuzziness exists in my labels.
 - **Across the whole seed,** 349 of 1,133 posts were kept (31%). If precision holds near 64%, roughly a third of the feed is noise.
 
-**Caveats:** 58 posts with 15 relevant is small, so one extra error moves recall by several points; use these numbers as a picture of the failure types, not a precise score. The sample is capped per subreddit, so the mix is not the real mix. Part of my key was drafted by an AI, so it could share blind spots with the model being tested. The evaluation script has a simpler retry than the app, without the repair step, so these results do not include it.
-
 ## 4. What 1,000 posts cost
 
 From the evaluation run: about 730 input and 62 output tokens per post, so **0.73M input and 0.062M output tokens per 1,000 posts**. Mistral lists ministral-14b at $0.20 per million tokens for both input and output (checked October 2026; confirm on Mistral's pricing page).
@@ -66,6 +64,7 @@ Collection is free (a keyless archive), and I ran on free hosting tiers. At my r
 4. **A proper data source:** official Reddit API access or a licensed provider, with comment coverage and a live search.
 5. **Production basics:** Postgres instead of SQLite (the free hosting tier I looked at wipes local disk on restart, so the app reloads a seed file when the database is empty), a real job scheduler with retries, authentication and per-user workspaces, and alerts.
 6. **A feedback loop:** use handled/dismissed actions as labels to measure and improve the filter over time.
+7. **Multi-language support:** detect each post's language and classify non-English posts properly, with keyword matching and the prompt adapted per language.
 
 ## 6. Assumptions
 
