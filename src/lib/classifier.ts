@@ -1,4 +1,5 @@
 import { getDb } from "./db";
+import { MAX_ATTEMPTS, recordFailure } from "./retry";
 import { log } from "./log";
 import { listKeywords } from "./keywords";
 import { getProvider } from "./llm";
@@ -89,7 +90,7 @@ export async function classifyPending(
   const limit = opts.limit ?? 100000;
   const rows = db
     .prepare(`SELECT p.id, p.company_id, p.subreddit, p.title, p.body
-              FROM posts p WHERE p.relevant IS NULL ORDER BY p.created_utc DESC LIMIT ?`)
+              FROM posts p WHERE p.relevant IS NULL AND p.classify_attempts < ${MAX_ATTEMPTS} AND (p.next_attempt_at IS NULL OR p.next_attempt_at <= ${Math.floor(Date.now() / 1000)}) ORDER BY p.classify_attempts ASC, p.created_utc DESC LIMIT ?`)
     .all(limit) as unknown as PostRow[];
 
   const ctxCache = new Map<number, any>();
@@ -108,8 +109,8 @@ export async function classifyPending(
   };
 
   const save = db.prepare(`UPDATE posts SET relevant = ?, category = ?, sentiment = ?, urgency = ?,
-                           reason = ?, classified_at = datetime('now') WHERE id = ?`);
-  const stats = { total: rows.length, kept: 0, dropped: 0, failed: 0, promptTokens: 0, completionTokens: 0 };
+                           reason = ?, classified_at = datetime('now'), classify_error = NULL, next_attempt_at = NULL WHERE id = ?`);
+  const stats = { total: rows.length, kept: 0, dropped: 0, failed: 0, dead: 0, promptTokens: 0, completionTokens: 0 };
   let next = 0;
 
   async function worker() {
@@ -146,7 +147,9 @@ export async function classifyPending(
         }
       } catch (e: any) {
         stats.failed++; // left unclassified; retried on the next run
-        log("error", "classify", "post failed, left unclassified", { post: row.id, error: e.message });
+        const outcome = recordFailure(db, row.id, e.message);
+        if (outcome === "dead") stats.dead++;
+        log(outcome === "dead" ? "error" : "warn", "classify", outcome === "dead" ? "post given up after repeated failures" : "post failed, will retry later", { post: row.id, outcome, error: e.message });
       }
     }
   }

@@ -9,9 +9,14 @@ export type NormalizedPost = {
   created_utc: number;
 };
 
-// Anything that can list recent posts of a subreddit. Swappable:
-// Arctic Shift today, official OAuth API or a bundled snapshot tomorrow.
+export type FetchResult = {
+  posts: NormalizedPost[];
+  reachedEnd: boolean;      // false = stopped at the page cap, more is waiting
+  lastUtc: number | null;   // newest post actually fetched: the next bookmark
+};
+
+// Anything that can list a subreddit's posts since a time, oldest first.
 export interface PostSource {
   name: string;
-  fetchSubreddit(subreddit: string, sinceUtc: number): Promise<NormalizedPost[]>;
+  fetchSubreddit(subreddit: string, sinceUtc: number): Promise<FetchResult>;
 }

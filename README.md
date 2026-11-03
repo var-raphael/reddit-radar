@@ -60,7 +60,7 @@ On a schedule: set `CRON_SECRET` in `.env`, then have any scheduler call:
 
     curl -X POST https://<your-host>/api/collect -H "x-cron-secret: <CRON_SECRET>"
 
-It answers immediately (`202 started`, or `409` if a run is already going) and does the work in the background. `GET /api/health` is a plain liveness check for keep-alive pings. Collection is incremental: each subreddit keeps a bookmark of the newest post seen, so repeat runs only fetch what is new.
+It answers immediately (`202 started`, or `409` if a run is already going) and does the work in the background. `GET /api/health` is a plain liveness check for keep-alive pings. Collection is incremental: each subreddit keeps a bookmark of the last post processed, so repeat runs only fetch what is new and a large backlog is worked through over several runs.
 
 ## Data source
 

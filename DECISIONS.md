@@ -6,7 +6,7 @@
 
 **Why not Reddit directly:** on 31 Oct 2026 I tested Reddit's `search.json`, `search.rss` and a subreddit `.rss` feed from my own connection, and all three returned 403. Reports I found say Reddit shut off unauthenticated JSON access in May 2026 and stopped accepting new API signups, so the usual routes (public JSON, new OAuth app) were closed to me. I did not try scraping.
 
-**How it works:** for each subreddit I list, the collector fetches recent posts (30-day window on first run), then matches the keywords itself, whole-word and case-insensitive. Arctic Shift's own keyword search timed out when I tried it, so listing and matching locally was the reliable route. Each subreddit keeps a bookmark of the newest post seen, so later runs only fetch what is new.
+**How it works:** for each subreddit I list, the collector fetches recent posts (30-day window on first run), then matches the keywords itself, whole-word and case-insensitive. Arctic Shift's own keyword search timed out when I tried it, so listing and matching locally was the reliable route. Each subreddit keeps a bookmark of the last post processed, and the scan runs oldest-first from there, so a backlog larger than one run (1,500 posts) drains over the next runs and nothing is skipped.
 
 **Limits:**
 - It only sees the subreddits I list. It cannot search all of Reddit, so conversations in subreddits I did not think of are missed.

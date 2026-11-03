@@ -184,3 +184,88 @@ test("deleting a company removes its data and leaves other companies alone", () 
   assert.equal(db.prepare("SELECT count(*) c FROM companies WHERE id = ?").get(other).c, 0);
   assert.equal(count("posts", companyId), acmePosts);
 });
+
+test("a post that keeps failing is given up on after the attempt limit", async () => {
+  col.insertPosts(companyId, "Acme", [post("x1")]);
+  const db = dbm.getDb();
+  db.prepare("UPDATE posts SET relevant = 1 WHERE relevant IS NULL AND reddit_id != 'x1'").run();
+  let calls = 0;
+  const junk = { name: "junk", complete: async () => { calls++; return { content: "not json", usage: {} }; } };
+  for (let i = 0; i < 5; i++) {
+    db.prepare("UPDATE posts SET next_attempt_at = NULL WHERE reddit_id = 'x1'").run(); // skip the wait
+    await cls.classifyPending({ provider: junk, concurrency: 1 });
+  }
+  const row = db.prepare("SELECT classify_attempts a, relevant r FROM posts WHERE reddit_id = 'x1'").get();
+  assert.equal(row.a, 3);
+  assert.equal(row.r, null);
+  assert.equal(calls, 6); // 2 model calls per run (answer + repair) x 3 runs, then never again
+});
+
+test("rate-limit errors do not count against a post", async () => {
+  col.insertPosts(companyId, "Acme", [post("t1")]);
+  const db = dbm.getDb();
+  db.prepare("UPDATE posts SET relevant = 1 WHERE relevant IS NULL AND reddit_id != 't1'").run();
+  const limited = { name: "limited", complete: async () => { throw new Error("LLM API 429: rate limited"); } };
+  await cls.classifyPending({ provider: limited, concurrency: 1 });
+  assert.equal(db.prepare("SELECT classify_attempts a FROM posts WHERE reddit_id = 't1'").get().a, 0);
+});
+
+function fakeArchive(n: number) {
+  const archive = Array.from({ length: n }, (_, i) => ({
+    id: "s" + i, title: "t" + i, selftext: "", author: "u", subreddit: "X", score: 1, created_utc: 1700000000 + i,
+  }));
+  return (async (url: string) => {
+    const q = new URL(String(url)).searchParams;
+    const rows = archive.filter((r) => r.created_utc > Number(q.get("after"))).slice(0, Number(q.get("limit")));
+    return new Response(JSON.stringify({ data: rows }), { status: 200 });
+  }) as typeof fetch;
+}
+
+test("when the page cap is hit, the bookmark stays at the last post fetched and nothing is skipped", async () => {
+  process.env.SOURCE_PAGE_DELAY_MS = "0";
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = fakeArchive(3000);
+  try {
+    const src = await import("../src/lib/sources/arcticShift");
+    const res = await src.arcticShift.fetchSubreddit("X", 1699999999);
+    assert.equal(res.reachedEnd, false);
+    assert.equal(new Set(res.posts.map((p: any) => p.reddit_id)).size, res.posts.length);
+    assert.equal(res.posts.length, res.lastUtc! - 1700000000 + 1); // contiguous from the start: no gaps
+    assert.ok(res.lastUtc! < 1700000000 + 2999);                   // and NOT jumped to the newest post
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});
+
+test("a small archive is read to the end", async () => {
+  process.env.SOURCE_PAGE_DELAY_MS = "0";
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = fakeArchive(150);
+  try {
+    const src = await import("../src/lib/sources/arcticShift");
+    const res = await src.arcticShift.fetchSubreddit("X", 1699999999);
+    assert.equal(res.reachedEnd, true);
+    assert.equal(res.posts.length, 150);
+    assert.equal(res.lastUtc, 1700000149);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});
+
+test("the collector bookmarks the last post processed", async () => {
+  const subs = await import("../src/lib/subreddits");
+  const cid = kw.ensureCompany("BacklogCo");
+  kw.addKeyword(cid, "Acme", "brand");
+  subs.addSubreddit(cid, "Backlog");
+  const source = {
+    name: "fake",
+    fetchSubreddit: async () => ({
+      posts: [post("b1", "Acme is great"), post("b2", "Acme again")],
+      reachedEnd: false,
+      lastUtc: 1700000100,
+    }),
+  };
+  await col.collectAll({ source, concurrency: 1 });
+  const mark = dbm.getDb().prepare("SELECT newest_utc n FROM sync_state WHERE company_id = ? AND subreddit = 'Backlog'").get(cid).n;
+  assert.equal(mark, 1700000100);
+});

@@ -85,22 +85,27 @@ export async function collectAll(
       try {
         const mark = opts.full ? null : getBookmark(c.id, sub);
         const since = mark ? Math.max(windowStart, mark - OVERLAP_SEC) : windowStart;
-        const posts = await source.fetchSubreddit(sub, since);
+        const res = await source.fetchSubreddit(sub, since);
         let matched = 0;
         let added = 0;
-        for (const p of posts) {
+        for (const p of res.posts) {
           const hit = matchPost(p, kws);
           if (!hit) continue;
           matched++;
           added += insertPosts(c.id, hit.term, [p]);
         }
-        if (posts.length) {
-          const newest = Math.max(...posts.map((p) => p.created_utc));
-          setBookmark(c.id, sub, Math.max(newest, mark ?? 0));
-        }
+        // The bookmark is the last post actually processed, never "the newest in the archive".
+        if (res.lastUtc !== null) setBookmark(c.id, sub, Math.max(res.lastUtc, mark ?? 0));
         const ms = Date.now() - t;
-        rows.push({ company: c.name, subreddit: sub, fetched: posts.length, matched, added, ms });
-        log("info", "collect", "subreddit done", { company: c.name, subreddit: sub, fetched: posts.length, matched, added, ms });
+        rows.push({ company: c.name, subreddit: sub, fetched: res.posts.length, matched, added, ms });
+        log("info", "collect", "subreddit done", {
+          company: c.name, subreddit: sub, fetched: res.posts.length, matched, added, ms, behind: !res.reachedEnd,
+        });
+        if (!res.reachedEnd && res.lastUtc !== null) {
+          log("warn", "collect", "page cap reached, will continue next run", {
+            subreddit: sub, behind_hours: Math.round((Date.now() / 1000 - res.lastUtc) / 3600),
+          });
+        }
       } catch (e: any) {
         errors.push(`r/${sub}: ${e.message}`);
         log("error", "collect", "subreddit failed", { company: c.name, subreddit: sub, error: e.message });
